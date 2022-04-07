@@ -1,11 +1,6 @@
-% Compile with:
-% latexmk -pdf -pvc -interaction=nonstopmode *Pres*.tex
-%\documentclass[aspectratio=169,draft]{beamer}
 \documentclass[aspectratio=169]{beamer}
 
-% !TEX root = XRayMicroTomography.Presentation.tex
-
-\title{X-ray microtomography}
+\title{Why would you want to to X-ray microtomographic imaging?}
 \author{David Haberthür}
 \date{April 4, 2022 | X-ray microtomography}
 
@@ -18,8 +13,6 @@
 \newlength\imagewidth% needed for scalebars
 \newlength\imagescale% needed for scalebars
 \newcommand{\uct}{{\textmu}CT\xspace}% make our life easier
-\newcommand{\eg}{e.\,g.\xspace}%
-\newcommand{\ie}{i.\,e.\xspace}%
 
 \usepackage[backend=biber,
 	style=numeric,
@@ -46,30 +39,15 @@
 \usepackage{microtype}
 \usepackage[absolute,overlay]{textpos} %for the \source{} command
 \usepackage[missing=main]{gitinfo2} % GitHub Actions don't pull in the commit hash, so we just show `main'
-\usepackage{xspace}
 \usepackage{ccicons}
+\usepackage{xspace}
 \usepackage{animate}
-\usepackage{fontawesome5}
-\usepackage{csquotes}
 \usepackage{lipsum} %for alignment testing
 \usepackage{mathastext}
 
 % Define complementary colors to ubRed
 \definecolor{ubRedComplementary1}{HTML}{00a1e6}
 \definecolor{ubRedComplementary2}{HTML}{00e645}
-
-% change tikz font to slide font
-% https://tex.stackexchange.com/a/33329/828
-\usepackage[eulergreek]{sansmath}
-	\pgfplotsset{tick label style = {font=\sansmath\sffamily},
-		every axis label = {font=\sansmath\sffamily},
-		legend style = {font=\sansmath\sffamily},
-		label style = {font=\sansmath\sffamily}
-		}
-
-% Globally thicker lines in with tikz
-% https://tex.stackexchange.com/a/206769/828
-\tikzset{every picture/.style={thick}}
 
 % Acknowledge images just below them
 % Based on https://tex.stackexchange.com/a/282637/828
@@ -86,14 +64,6 @@
 	\raisebox{-1.618ex}{%
 		\makebox[0pt][r]{%
 			\scriptsize From \cite{#1}, #2%
-			}%
-		}%
-	}%
-\newcommand{\sourcelink}[3]{%
-	% Make the source command an \href{link}{text}
-	\raisebox{-1.618ex}{%
-		\makebox[0pt][r]{%
-			\scriptsize\href{http://#1}{#2}, #3%
 			}%
 		}%
 	}%
@@ -170,7 +140,7 @@
 }
 
 \begin{frame}
-	\frametitle{CT-Scanner}
+	\frametitle{Computed tomography}
 	\centering
 	\mode<beamer>{%
 		\animategraphics[loop,autoplay,height=0.618\textheight,every=\everyframe]{24}{./movies/ct-scanner/ct-scanner0}{001}{480}%
@@ -188,7 +158,7 @@
 
 \renewcommand{\imheight}{0.5\paperheight}
 \begin{frame}
-	\frametitle{\uct imaging group}
+	\frametitle{What can you do?}
 	\begin{columns}
 		\begin{column}{0.618\linewidth}
 			\begin{itemize}
@@ -197,20 +167,17 @@
 					\item Angiogenesis: heart, musculature~\cite{Nording2021} and bones
 					\item Vasculature: (mouse) brain~\cite{Hlushchuk2020}, (human) nerve scaffolds~\cite{Wuthrich2020}, (human) skin flaps~\cite{Zubler2021} and tumors
 				\end{itemize}
-				\item Zebrafish musculature and gills~\cite{MesserliAaldijk2020}
+				\item (Zebra)Fish musculature, gills~\cite{MesserliAaldijk2020} and teeth
 				\item (Lung) tumor detection and metastasis classification~\cite{Trappetti2021}
 				\item Collaborations with museums~\cite{Bochud2021} and scientist at our institute~\cite{Halm2021} to scan a wide range of specimens
-				\item Automate \emph{all} the things!~\cite{Haberthur2021}
 			\end{itemize}
 		\end{column}
 		\begin{column}{0.382\linewidth}
 			\centering
-			\includegraphics<1|handout:0>[height=\imheight]{./images/1172}%
-			\only<1|handout:0>{\source{brukersupport.com}{}}
-			\includegraphics<2>[width=\imwidth]{./images/1272}%
-			\only<2>{\source{bruker.com/skyscan1272}{}}
-			\includegraphics<3|handout:0>[width=\imwidth]{./images/2214}%
-			\only<3|handout:0>{\source{bruker.com/skyscan2214}{}}
+			\includegraphics<1>[width=\imwidth]{./images/1272}%
+			\only<1>{\source{bruker.com/skyscan1272}{}}
+			\includegraphics<2>[width=\imwidth]{./images/2214}%
+			\only<2>{\source{bruker.com/skyscan2214}{}}
 		\end{column}
 	\end{columns}
 \end{frame}
@@ -221,18 +188,18 @@
 	\begin{columns}%
 		\begin{column}{0.4\linewidth}%
 			\begin{itemize}%
-				\item<1-|handout:1-> Medical research%
-				\item<1-|handout:1-> Non-destructive insights into the samples%
-				\item<2-|handout:1->(Small) Biological samples%
+				\item<1-> Medical research%
+				\item<1> Non-destructive insights into the samples%
+				\item<2>(Small) Biological samples%
 			\end{itemize}%
 		\end{column}%
 		\begin{column}{0.6\linewidth}%
 			\centering%
-			\only<1-2|handout:1>{%
+			\only<1->{%
 				\includegraphics[height=\imheight]{./images/Sagittal_brain_MRI}%
 				\source{w.wiki/7g4}{\ccbysa}%
 			}%
-			\only<3|handout:2>{%
+			\only<3>{%
 				\begin{tikzpicture}[remember picture,overlay]%
 					\node at (current page.center){%
 						\mode<beamer>{\animategraphics[loop,autoplay,width=\paperwidth,every=\everyframe]{24}{./movies/mouse_skull/mouse_skull}{000}{236}}%
@@ -244,13 +211,32 @@
 	\end{columns}%
 \end{frame}
 
+\begin{frame}
+	\frametitle{Why do \emph{you} need \uct?}
+	\begin{columns}%
+		\begin{column}{0.45\linewidth}%
+			No matter what kind of machine, the basic principle is always the same
+			\begin{itemize}
+				\item an x-ray source
+				\item a sample
+				\item a detector
+			\end{itemize}
+		\end{column}%
+		\begin{column}{0.45\linewidth}%
+			\centering%
+			\includegraphics[width=\imwidth]{./images/3D_Computed_Tomography}%
+			\source{w.wiki/7g3}{\ccbysa}%
+		\end{column}%
+	\end{columns}%
+\end{frame}
+
 \renewcommand{\imwidth}{\columnwidth}
 \begin{frame}
-	\frametitle{Why do we need \uct?}
+	\frametitle{Why do \emph{you} need \uct?}
 	\begin{columns}
 		\begin{column}{0.49\linewidth}
 			% https://www.cancerimagingarchive.net/nbia-search/?saved-cart=nbia-76761575299081509
-			\only<1-4|handout:1-4>{%
+			\only<1-4>{%
 				\pgfmathsetlength{\imagewidth}{\imwidth}%
 				\pgfmathsetlength{\imagescale}{\imagewidth/512}%
 				\def\x{316}% scalebar-x starting at golden ratio of image width of 512px = 316
@@ -262,7 +248,7 @@
 					\draw[|-|,white,shadowed] (\x,\y) -- (\x+102.4,\y) node [midway,above] {\shadowtext{\SI{5}{\centi\meter}}};
 				\end{tikzpicture}%
 			}%
-			\only<5|handout:0>{%
+			\only<5>{%
 				\pgfmathsetlength{\imagewidth}{\imwidth}%
 				\pgfmathsetlength{\imagescale}{\imagewidth/512}%
 				\def\x{316}% scalebar-x starting at golden ratio of image width of 512px = 316
@@ -277,7 +263,7 @@
 				\end{tikzpicture}%
 			}%
 			\renewcommand{\imwidth}{0.1554\columnwidth}%
-			\only<6|handout:5>{%
+			\only<6>{%
 				\centering
 				\pgfmathsetlength{\imagewidth}{\imwidth}%
 				\pgfmathsetlength{\imagescale}{\imagewidth/512}%
@@ -292,7 +278,7 @@
 			\sourcecite{Clark2013}{Subject \emph{C3L-02465}}
 		\end{column}%
 		\begin{column}{0.49\linewidth}
-			\only<1|handout:1>{%
+			\only<1>{%
 				\pgfmathsetlength{\imagewidth}{\imwidth}%
 				\pgfmathsetlength{\imagescale}{\imagewidth/3295}%
 				\def\x{2036}% scalebar-x starting at golden ratio of image width of 3295px = 2036
@@ -305,7 +291,7 @@
 				\end{tikzpicture}%
 			}%
 			\renewcommand{\imwidth}{0.1\columnwidth}%
-			\only<2|handout:2>{%
+			\only<2>{%
 				\centering
 				\pgfmathsetlength{\imagewidth}{\imwidth}%
 				\pgfmathsetlength{\imagescale}{\imagewidth/54}%
@@ -320,7 +306,7 @@
 				\end{tikzpicture}%
 			}%
 			\renewcommand{\imwidth}{\columnwidth}
-			\only<3|handout:3>{%
+			\only<3>{%
 				\centering
 				\pgfmathsetlength{\imagewidth}{\imwidth}%
 				\pgfmathsetlength{\imagescale}{\imagewidth/54}%
@@ -334,7 +320,7 @@
 					%\draw[color=red, anchor=south west] (0,24) node [fill=white, semitransparent] {Legend} node {Legend};
 				\end{tikzpicture}%
 			}%
-			\only<4|handout:4>{%
+			\only<4>{%
 				\pgfmathsetlength{\imagewidth}{\imwidth}%
 				\pgfmathsetlength{\imagescale}{\imagewidth/3295}%
 				\def\x{2036}% scalebar-x starting at golden ratio of image width of 3295px = 2036
@@ -345,7 +331,7 @@
 					\draw[|-|,white,shadowed] (\x,\y) -- (\x+628.14,\y) node [midway,above] {\shadowtext{\SI{5}{\milli\meter}}};
 				\end{tikzpicture}%
 			}%
-			\only<5|handout:0>{%
+			\only<5>{%
 				\pgfmathsetlength{\imagewidth}{\imwidth}%
 				\pgfmathsetlength{\imagescale}{\imagewidth/3295}%
 				\def\x{2036}% scalebar-x starting at golden ratio of image width of 3295px = 2036
@@ -359,7 +345,7 @@
 					\draw[|-|,white,shadowed] (\x,\y) -- (\x+628.14,\y) node [midway,above] {\shadowtext{\SI{5}{\milli\meter}}};
 				\end{tikzpicture}%
 			}%
-			\only<6|handout:5>{%
+			\only<6>{%
 				\pgfmathsetlength{\imagewidth}{\imwidth}%
 				\pgfmathsetlength{\imagescale}{\imagewidth/3295}%
 				\def\x{2036}% scalebar-x starting at golden ratio of image width of 3295px = 2036
@@ -380,41 +366,6 @@
 	The files from the early animation were resized 0.25 times; here we used the original dataset (Mouse1265\_Skull\_Gaby\_TKI\_7\_96um\_Al05\_2K) for a reslice and the generation of the MIP.
 	The voxel size of the original data is 7.96 um, the image size is 3295\(\times\)1492 pixels.
 	}
-
-\begin{frame}
-	\frametitle{Why do we need \uct?}
-	\begin{columns}%
-		\begin{column}{0.45\linewidth}%
-			No matter what kind of machine, the basic principle is always the same
-			\begin{itemize}
-				\item an x-ray source
-				\item a sample
-				\item a detector
-			\end{itemize}
-		\end{column}%
-		\begin{column}{0.45\linewidth}%
-			\centering%
-			\includegraphics[width=\imwidth]{./images/3D_Computed_Tomography}%
-			\source{w.wiki/7g3}{\ccbysa}%
-		\end{column}%
-	\end{columns}%
-\end{frame}
-
-\begin{frame}
-	\frametitle{Why do we need \uct?}
-	\begin{columns}
-		\begin{column}{0.49\linewidth}
-			\centering
-			\input{animations/classicCT}
-		\end{column}
-		\begin{column}{0.49\linewidth}
-			\centering
-			\only<1>{\input{animations/microCT}}%
-			\only<2|handout:0>{\input{animations/microCT_lr}}%
-			\only<3|handout:0>{\input{animations/microCT_hr}}%
-		\end{column}
-	\end{columns}
-\end{frame}
 
 \begin{frame}
 	\frametitle{Thanks!}
